@@ -1,0 +1,24 @@
+{
+  "extends": ["eslint:recommended"],
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "no-console": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"]
+    }
+  ]
+}
