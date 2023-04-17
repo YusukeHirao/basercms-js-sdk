@@ -63,6 +63,21 @@ export type Site = {
   modified: string; // Date
 };
 
+export type ContentFolder = {
+  id: number;
+  folder_template: string;
+  page_template: string;
+  created: string; // Date
+  modified: string | null; // Date
+  content: Content;
+};
+
+export type ContentFolderDetail = ContentFolder & {
+  content: Content & {
+    site: Site;
+  };
+};
+
 export type Page = {
   id: number;
   contents: string;
@@ -70,4 +85,70 @@ export type Page = {
   page_template: string;
   modified: string; // Date
   created: string; // Date
+};
+
+export type PageDetail = Page & {
+  content: Content & {
+    site: Site;
+  };
+};
+
+export type SearchIndex = {
+  id: number;
+  type: string;
+  model: string;
+  model_id: number;
+  site_id: number;
+  content_id: number;
+  content_filter_id: null; // ?
+  lft: number;
+  rght: number;
+  title: string | null;
+  detail: string;
+  url: string;
+  status: null; // ?
+  priority: string;
+  publish_begin: null; // ?
+  publish_end: null; // ?
+  created: string; // Date
+  modified: string; // Date
+};
+
+export type BlogContent = {
+  id: number;
+  description: string;
+  template: string;
+  list_count: number;
+  list_direction: "DESC" | "ASC";
+  feed_count: number;
+  tag_use: boolean;
+  comment_use: boolean;
+  comment_approve: boolean;
+  auth_captcha: boolean;
+  widget_area: number;
+  eye_catch_size: string;
+  use_content: boolean;
+  created: string; // Date
+  modified: string | null; // Date
+};
+
+export type BlogPost = {
+  id: number;
+  blog_content_id: number;
+  no: number;
+  name: string | null; // ?
+  title: string;
+  content: string; // HTML
+  blog_category_id: number;
+  user_id: number;
+  status: boolean;
+  posted: string; // Date
+  content_draft: string;
+  detail_draft: string;
+  publish_begin: string | null;
+  publish_end: string | null;
+  exclude_search: boolean;
+  eye_catch: string; // Path
+  created: string; // Date
+  modified: string; // Date
 };
